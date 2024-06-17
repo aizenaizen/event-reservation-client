@@ -115,6 +115,15 @@ const Login = () => {
 
                     <Button className="ml-3">Login</Button>
                 </div>
+                
+
+                <div className="flex items-center float-right justify-end mt-4 mx-3">
+                    <Link
+                        href="/register"
+                        className="underline text-sm text-gray-600 hover:text-gray-900">
+                        Register
+                    </Link>
+                </div>
             </form>
         </>
     )
