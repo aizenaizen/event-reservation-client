@@ -33,7 +33,14 @@ const Navigation = ({ user }) => {
                             <NavLink
                                 href="/dashboard"
                                 active={usePathname() === '/dashboard'}>
-                                Dashboard
+                                Events
+                            </NavLink>
+                        </div>
+                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <NavLink
+                                href="/reservations"
+                                active={usePathname() === '/reservations'}>
+                                Reservations
                             </NavLink>
                         </div>
                     </div>
@@ -45,8 +52,10 @@ const Navigation = ({ user }) => {
                             width="48"
                             trigger={
                                 <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
-                                    <div>{user?.name}</div>
-
+                                    <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                        <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+                                    </div>
+                                    <div className="px-2">{user?.data?.name}</div>
                                     <div className="ml-1">
                                         <svg
                                             className="fill-current h-4 w-4"
@@ -62,6 +71,11 @@ const Navigation = ({ user }) => {
                                 </button>
                             }>
                             {/* Authentication */}
+                            <a href={`/profile`}>
+                            <DropdownButton>
+                                My Profile
+                            </DropdownButton>
+                            </a>
                             <DropdownButton onClick={logout}>
                                 Logout
                             </DropdownButton>
@@ -108,7 +122,7 @@ const Navigation = ({ user }) => {
                         <ResponsiveNavLink
                             href="/dashboard"
                             active={usePathname() === '/dashboard'}>
-                            Dashboard
+                            Events
                         </ResponsiveNavLink>
                     </div>
 
@@ -143,6 +157,11 @@ const Navigation = ({ user }) => {
 
                         <div className="mt-3 space-y-1">
                             {/* Authentication */}
+                            <a href={`/profile`}>
+                            <ResponsiveNavButton>
+                                My Profile
+                            </ResponsiveNavButton>
+                            </a>
                             <ResponsiveNavButton onClick={logout}>
                                 Logout
                             </ResponsiveNavButton>
