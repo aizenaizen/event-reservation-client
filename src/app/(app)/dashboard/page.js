@@ -58,7 +58,7 @@ const Dashboard = () => {
         title: '',
         description: '',
         datetime: '',
-        deadline: '',
+        reserve_deadline: '',
         location: '',
         price: '',
         attendee_limit: ''
@@ -189,7 +189,7 @@ const Dashboard = () => {
                                             <td className="p-4">
                                                 {user.data.user_type_id == 4 ? (
                                                     reservations.find(({event_id: id}) => id === event.id) === undefined ? (
-                                                        event.attributes.available > 0 ? (
+                                                        (event.attributes.available > 0 && event.attributes.reserve_deadline < Date.now()) ? (
                                                             <button className="px-3 py-2 mx-1 text-xs rounded-md bg-blue-500 text-white" 
                                                                 onClick={() => handleReserveEvent(event.id, event.attributes.title)}>Reserve</button>
                                                         ) : (
@@ -263,6 +263,18 @@ const Dashboard = () => {
                                 name="event_date"
                                 className="w-full border-gray-300 rounded-md"
                                 value={formData.event_date}
+                                onChange={handleFormFieldChange}
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="reserve_deadline" className="block font-medium">
+                                Reservation Deadline
+                            </label>
+                            <input
+                                type="datetime-local"
+                                name="reserve_deadline"
+                                className="w-full border-gray-300 rounded-md"
+                                value={formData.reserve_deadline}
                                 onChange={handleFormFieldChange}
                             />
                         </div>
